@@ -48,6 +48,7 @@ Citation
     Yu, S., Li, X. (2026). Dual-Sided Spectral Reference Reconstruction for
     long-duration artifact repair in Apollo lunar seismic records.
     *Seismological Research Letters* (submitted).
+    Software (Zenodo DOI): https://doi.org/10.5281/zenodo.23192456
 
 License: MIT (see ``LICENSE``).
 """

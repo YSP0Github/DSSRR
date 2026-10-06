@@ -429,6 +429,8 @@ If you use this code, please cite:
 > long-duration artifact repair in Apollo lunar seismic records.
 > *Seismological Research Letters* (submitted).
 
+Software archived at https://doi.org/10.5281/zenodo.23192456 (Zenodo).
+
 ## License
 
 MIT &mdash; see [LICENSE](LICENSE).
