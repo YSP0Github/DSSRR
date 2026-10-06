@@ -1,0 +1,41 @@
+# ---------------------------------------------------------------------------
+# MANIFEST.in — what goes into the *source* distribution (sdist).
+#
+# The wheel is governed by [tool.setuptools.package-data] in pyproject.toml and
+# only ever contains the importable ``dssrr`` package.  The sdist is the
+# "everything you need to reproduce the work" artefact: source, tests,
+# documentation, runnable examples and their fixtures.
+# ---------------------------------------------------------------------------
+
+# Licence + top-level project documents
+include LICENSE
+include README.md
+include pyproject.toml
+include setup.py
+
+# Package source and the data files that ship inside the installed package
+# (GUI icons, moonquake catalogue).  ``recursive-include`` covers subpackages
+# such as dssrr.gui and dssrr.repair_lib.
+recursive-include dssrr *.py
+recursive-include dssrr *.json *.csv *.svg *.png *.ico
+
+# Human-facing documentation (CLI guide, pipeline figure)
+recursive-include docs *.md *.svg *.png
+
+# Runnable examples and the Apollo MiniSEED fixtures they run against.
+# The fixtures live in examples/ only — they are never installed.
+recursive-include examples *.py *.md
+recursive-include examples/data *.mseed *.md
+
+# Regression test suite
+recursive-include tests *.py
+
+# --- Never ship build artefacts, caches or runtime output -------------------
+global-exclude *.py[cod]
+global-exclude __pycache__
+prune examples/data_repaired
+prune examples/__pycache__
+prune tests/__pycache__
+prune catalogs
+prune .vscode
+prune .pytest_cache

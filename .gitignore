@@ -1,0 +1,71 @@
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+sdist/
+wheels/
+*.egg-info/
+*.egg
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# ---------------------------------------------------------------------------
+# Testing / coverage / linting
+# ---------------------------------------------------------------------------
+.pytest_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+*.cover
+.mypy_cache/
+.ruff_cache/
+
+# ---------------------------------------------------------------------------
+# Editors / IDEs
+# ---------------------------------------------------------------------------
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ---------------------------------------------------------------------------
+# OS junk
+# ---------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---------------------------------------------------------------------------
+# Project-specific
+# ---------------------------------------------------------------------------
+# Runtime log written by the GUI when an unexpected error is trapped
+debug.log
+# Runtime output: per-month repair catalogues + verification JSON
+catalogs/
+# Figures / reports written by examples and the GUI export dialog
+examples/**/*.png
+examples/**/*.pdf
+# Repaired archive produced by running the batch example / CLI — a build
+# product, reproducible from examples/data with the bundled command.
+examples/data_repaired/
+demo_output.png
+# Local user settings (created on first run, never committed)
+.dssrr_settings.json
+.seisy_repair_settings.json
+.dssrr_moonquake_catalog.json
+.seisy_moonquake_catalog.json

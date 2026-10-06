@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 560" width="920" height="560" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Microsoft YaHei', sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5b6b7c"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#c0392b"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="920" height="560" rx="14" fill="#ffffff"/>
+  <rect x="0" y="0" width="920" height="560" rx="14" fill="none" stroke="#e3e8ee" stroke-width="2"/>
+
+  <text x="34" y="46" font-size="21" font-weight="700" fill="#1f2d3d">DSSRR pipeline</text>
+  <text x="34" y="70" font-size="13" fill="#6b7a8d">Dual-Sided Spectral Reference Reconstruction &#8212; training-free, 8 steps</text>
+
+  <!-- Step 1: input -->
+  <rect x="34" y="96" width="250" height="52" rx="9" fill="#f4f6f8" stroke="#cfd8e3"/>
+  <text x="50" y="118" font-size="13.5" font-weight="600" fill="#1f2d3d">1 &#183; corrupted trace</text>
+  <text x="50" y="137" font-size="11.5" fill="#6b7a8d">x[start : end+1] is the anomaly core</text>
+
+  <!-- Step 2: two reference windows -->
+  <rect x="34" y="176" width="180" height="60" rx="9" fill="#eaf2fb" stroke="#9dc3e6"/>
+  <text x="48" y="200" font-size="13" font-weight="600" fill="#1b4f80">2a &#183; reference before</text>
+  <text x="48" y="220" font-size="11.5" fill="#41668c">L = clip(anom/2, 120s, 600s)</text>
+
+  <rect x="240" y="176" width="180" height="60" rx="9" fill="#eaf2fb" stroke="#9dc3e6"/>
+  <text x="254" y="200" font-size="13" font-weight="600" fill="#1b4f80">2b &#183; reference after</text>
+  <text x="254" y="220" font-size="11.5" fill="#41668c">safety gap guards each side</text>
+
+  <!-- Step 3: fused PSD -->
+  <rect x="34" y="268" width="386" height="56" rx="9" fill="#fdf0e6" stroke="#f0b37e"/>
+  <text x="50" y="292" font-size="13.5" font-weight="600" fill="#8a4b13">3 &#183; fused target PSD</text>
+  <text x="50" y="311" font-size="11.5" fill="#9c6633">Welch estimates from both sides are blended into one target spectrum</text>
+
+  <!-- Step 4: synthesis -->
+  <rect x="34" y="356" width="386" height="56" rx="9" fill="#fdf0e6" stroke="#f0b37e"/>
+  <text x="50" y="380" font-size="13.5" font-weight="600" fill="#8a4b13">4 &#183; overlap-add synthesis</text>
+  <text x="50" y="399" font-size="11.5" fill="#9c6633">reference blocks, random phase &#8594; realistic texture, matched energy</text>
+
+  <!-- Step 5: alignment + blend -->
+  <rect x="34" y="444" width="386" height="56" rx="9" fill="#e9f7f1" stroke="#8fd3b6"/>
+  <text x="50" y="468" font-size="13.5" font-weight="600" fill="#12694a">5 &#183; baseline align + boundary blend</text>
+  <text x="50" y="487" font-size="11.5" fill="#2f8a67">trend is bridged across the gap; edges cross-fade into the trace</text>
+
+  <!-- right column: outputs -->
+  <rect x="470" y="268" width="416" height="56" rx="9" fill="#eef1ff" stroke="#a9b4f0"/>
+  <text x="486" y="292" font-size="13.5" font-weight="600" fill="#333f8a">6 &#183; optional integer quantize</text>
+  <text x="486" y="311" font-size="11.5" fill="#5a66a8">round-half-to-even, only for raw integer counts (Apollo archive)</text>
+
+  <rect x="470" y="356" width="416" height="56" rx="9" fill="#eef1ff" stroke="#a9b4f0"/>
+  <text x="486" y="380" font-size="13.5" font-weight="600" fill="#333f8a">7 &#183; verification</text>
+  <text x="486" y="399" font-size="11.5" fill="#5a66a8">spectral / envelope / DC / autocorrelation / energy diagnostics</text>
+
+  <rect x="470" y="444" width="416" height="56" rx="9" fill="#fdecec" stroke="#f0a8a2"/>
+  <text x="486" y="468" font-size="13.5" font-weight="600" fill="#a32e24">8 &#183; repaired trace + report</text>
+  <text x="486" y="487" font-size="11.5" fill="#b6554c">everything outside the interval is copied through bit-identically</text>
+
+  <!-- arrows: vertical spine -->
+  <path d="M 159 148 L 159 176" fill="none" stroke="#5b6b7c" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <path d="M 159 236 L 159 268" fill="none" stroke="#5b6b7c" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <path d="M 227 324 L 227 356" fill="none" stroke="#5b6b7c" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <path d="M 420 296 L 470 296" fill="none" stroke="#5b6b7c" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <path d="M 420 384 L 470 384" fill="none" stroke="#5b6b7c" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <path d="M 420 472 L 470 472" fill="none" stroke="#5b6b7c" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <path d="M 678 324 L 678 356" fill="none" stroke="#5b6b7c" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <path d="M 678 412 L 678 444" fill="none" stroke="#5b6b7c" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- join 2a/2b into 3 -->
+  <path d="M 124 236 L 124 252 L 227 252 L 227 268" fill="none" stroke="#5b6b7c" stroke-width="1.8"/>
+  <path d="M 330 236 L 330 252 L 227 252" fill="none" stroke="#5b6b7c" stroke-width="1.8"/>
+  <path d="M 227 252 L 227 268" fill="none" stroke="#5b6b7c" stroke-width="1.8" marker-end="url(#arrow)"/>
+
+  <!-- invariant callout -->
+  <rect x="34" y="516" width="852" height="30" rx="8" fill="#fff8e6" stroke="#e8c98a"/>
+  <text x="48" y="536" font-size="12" fill="#7a5a12" font-weight="600">Invariant:</text>
+  <text x="126" y="536" font-size="12" fill="#8a6a20">the gap is not recoverable &#8212; DSSRR reproduces second-order statistics (PSD, autocorrelation, energy), never the lost phase.</text>
+</svg>

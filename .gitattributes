@@ -1,0 +1,26 @@
+# ---------------------------------------------------------------------------
+# Normalise line endings across platforms.
+#
+# The project is developed on Windows but built on Linux CI and installed
+# everywhere, so text files are stored with LF inside the repository and
+# checked out with the platform's native ending.  Without this, every file
+# shows up as modified the first time a Linux contributor touches it.
+# ---------------------------------------------------------------------------
+* text=auto eol=lf
+
+# Windows-only launchers must keep CRLF or cmd.exe mis-parses them
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Shell scripts must stay LF or they will not run on Unix
+*.sh text eol=lf
+
+# ---------------------------------------------------------------------------
+# Binary assets: never attempt text conversion or diffing.
+# MiniSEED fixtures and image assets would otherwise be mangled by eol
+# conversion and bloat every diff.
+# ---------------------------------------------------------------------------
+*.mseed binary
+*.png binary
+*.ico binary
+*.pdf binary
