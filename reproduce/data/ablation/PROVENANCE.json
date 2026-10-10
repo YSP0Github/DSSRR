@@ -1,0 +1,31 @@
+{
+  "experiment": "ablation",
+  "root": "G:\\SeisY\\docs\\dssrr_paper\\experiments\\results_ablation_v3",
+  "run_at": "2026-10-03T22:43:38",
+  "python": "3.11.9",
+  "n_rows": 24,
+  "git_commit": "618515ca91593d50dc5bba8b74e903f89ef0bc1f",
+  "git_commit_time": "2026-09-24 15:58:06 +0800",
+  "git_dirty": true,
+  "core_module_md5": {
+    "__init__.py": "0f419ea3657c1ff52fec9798ef898a64",
+    "comparison_methods.py": "3d9893d25c5e5955ebf8529e2b4474f1",
+    "config.py": "0fb18bfcf8066eb73c616098ab05cbab",
+    "detector.py": "a17b27d75fac2eee9866e84d1677c32b",
+    "engine.py": "ebfb8661291c83d69fdfbbfda27f3dc8",
+    "export_settings_dialog.py": "191b00c8779cdaf491a815d9183519a2",
+    "extractor.py": "9d7a4127fb79e7ea768b289ff3db2342",
+    "joiner.py": "f6e37b3cf989bcbd846991537277ac4b",
+    "layered_reference_spectrum.py": "11ed69b2cc365734369f73b25dda94eb",
+    "moonquake_protected_spike.py": "a4b6f97b43900125277a5aab7b281192",
+    "reference_spectrum.py": "bfdc52fb160a38c6fd5fa679b4e637fb",
+    "report_plot.py": "97dd6bb4a1bc780caa486c53eb507be1",
+    "screenshot.py": "665e1f17240a902ee6c61d393fca5c56",
+    "spectral.py": "73410d018183d48b79adcc56182b96b7",
+    "synthesizer.py": "d09bd244170f4851d64956f9033b9570",
+    "utils.py": "63f3e0bcd9c8ba60d72637e706afb9f9",
+    "verifier.py": "f60a13fd4fe3de015ec43b61a35a1d7c"
+  },
+  "script": "ablation_study_v3.py",
+  "script_md5": "575eb0cb2d31836d703cb21835686faa"
+}

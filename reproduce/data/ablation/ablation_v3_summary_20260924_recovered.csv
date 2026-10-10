@@ -1,0 +1,7 @@
+﻿config,wasserstein,acf_l2,boundary_jump,source
+full,0.237,0.062,,ablation_v3_final.png (2026-09-24 00:15)
+no_phase_template,0.184,0.101,,ablation_v3_final.png (2026-09-24 00:15)
+no_seam_blend,0.240,0.066,,ablation_v3_final.png (2026-09-24 00:15)
+linear_fusion,0.277,0.053,,ablation_v3_final.png (2026-09-24 00:15)
+no_trend_align,1.027,0.061,,ablation_v3_final.png (2026-09-24 00:15)
+one_sided,1.481,0.022,,ablation_v3_final.png (2026-09-24 00:15)
