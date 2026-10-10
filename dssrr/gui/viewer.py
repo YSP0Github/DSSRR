@@ -2563,6 +2563,7 @@ class RepairSettingsDialog(QDialog):
         "z_thr": "Z-score threshold", "z_bg_sec": "Z-score background",
         "spike_k_sigma": "Spike repair sigma", "ref_ratio": "Reference ratio",
         "ref_min_sec": "Min reference", "ref_max_sec": "Max reference",
+        "reference_gap_sec": "Safety gap (s)",
         "bkg_sec": "Energy background", "osc_lo": "Oscillation low",
         "osc_hi": "Oscillation high", "std_raw_factor": "Rebuild/raw cap",
         "std_bkg_factor": "Rebuild/bg cap",
@@ -2609,6 +2610,11 @@ class RepairSettingsDialog(QDialog):
                      "clamped to [ref_min, ref_max] s (paper default 120–600 s)",
         "ref_min_sec": "Reference segment minimum (s); paper default 120 s",
         "ref_max_sec": "Reference segment maximum (s); paper default 600 s",
+        "reference_gap_sec": "Safety gap (s) between the anomaly boundary and each "
+                              "reference segment; paper default 0.5 s. Too large "
+                              "shrinks the usable reference on long gaps; 0 means "
+                              "the reference sits right at the anomaly edge (not "
+                              "recommended).",
         "bkg_sec": "Energy background window (s) for the oscillation guard",
         "osc_lo": "Oscillation-ratio lower bound: inside active oscillation → back off",
         "osc_hi": "Oscillation-ratio upper bound",
@@ -2649,12 +2655,14 @@ class RepairSettingsDialog(QDialog):
             (self.tr("DSSRR reference & energy guard"), "repair",
              {k: RS.repair_spec()[k] for k in (
                  "spike_k_sigma", "ref_ratio", "ref_min_sec", "ref_max_sec",
-                 "bkg_sec", "osc_lo", "osc_hi", "std_raw_factor",
-                 "std_bkg_factor")},
+                 "reference_gap_sec", "bkg_sec", "osc_lo", "osc_hi",
+                 "std_raw_factor", "std_bkg_factor")},
              self.tr("DSSRR reference length ≥ L×ref_ratio (clamped to "
-                     "[ref_min, ref_max] s); energy guard backs off repair "
-                     "when the segment is part of active oscillation "
-                     "background (osc_lo..osc_hi) or the rebuilt std exceeds "
+                     "[ref_min, ref_max] s); reference segments are kept "
+                     "reference_gap_sec away from the anomaly edge; "
+                     "energy guard backs off repair when the segment is "
+                     "part of active oscillation background "
+                     "(osc_lo..osc_hi) or the rebuilt std exceeds "
                      "raw×std_raw_factor / bg×std_bkg_factor.")),
             (self.tr("Output"), "repair",
              {"quantize_to_int": (True,)},
@@ -2933,8 +2941,8 @@ class RepairHelpDialog(QDialog):
         return self._scrolled(ws)
 
     def _page_dssrr(self):
-        keys = ["ref_ratio", "ref_min_sec", "ref_max_sec", "bkg_sec",
-                "osc_lo", "osc_hi", "std_raw_factor", "std_bkg_factor"]
+        keys = ["ref_ratio", "ref_min_sec", "ref_max_sec", "reference_gap_sec",
+                "bkg_sec", "osc_lo", "osc_hi", "std_raw_factor", "std_bkg_factor"]
         ws = [self._sec(self.tr("DSSRR reference and energy guard"))]
         ws.append(QLabel(self.tr(
             "DSSRR synthesizes the missing segment from PSD characteristics "

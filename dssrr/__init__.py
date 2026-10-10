@@ -57,7 +57,7 @@ import numpy as np
 from .core import ReferenceSpectrumReplacer
 from .config import get_config
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 def dssrr_gui():
     """启动 DSSRR 桌面 GUI（查看器 / 手动重处理 / 批量去异常）。

@@ -375,6 +375,10 @@ dssrr/
     └── anomaly_repair/      the three public replacers (+ re-export shims)
 ```
 
+The companion **reproduction package** for the paper — the analysis drivers, the
+figure scripts and the instance-level result tables behind every figure and
+table — is in [`reproduce/`](reproduce/README.md).
+
 ## Sample data, provenance and acknowledgements
 
 `examples/data/` contains three 12-hour **Apollo 12 / 15 / 16** long-period

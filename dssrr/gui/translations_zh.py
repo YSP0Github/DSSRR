@@ -447,6 +447,145 @@ _METHODS: Dict[str, str] = {
     "Anomaly detection": "异常检测",
     "Output": "输出",
     "Verification": "验收",
+
+    # ------------------------------------------------------------------
+    # 修复参数（RepairSettingsDialog）：参数名 + 悬浮提示
+    # ------------------------------------------------------------------
+    # —— 参数名 ——
+    "Spike window": "尖峰检测窗",
+    "Spike threshold K": "尖峰阈值 K",
+    "Step threshold K": "阶跃阈值 K",
+    "Min freeze duration": "冻结最短时长",
+    "RMS short window": "RMS 短窗",
+    "RMS background window": "RMS 背景窗",
+    "RMS trigger ratio": "RMS 触发倍数",
+    "Min burst duration": "突发最短时长",
+    "Low-dynamic RMS": "低动态 RMS",
+    "Low-dynamic gain": "低动态增益",
+    "Merge gap": "异常合并间隔",
+    "Short pad": "短边界扩展",
+    "Long pad": "长边界扩展",
+    "Max repair duration": "最大修复时长",
+    "Event morph tolerance": "事件形态容差",
+    "Event jitter tolerance": "事件抖动容差",
+    "Min event duration": "事件最短时长",
+    "Event coda ratio": "事件尾波倍数",
+    "Event RMS smooth": "事件 RMS 平滑",
+    "Head/mid ratio": "头/中幅比",
+    "Event missing frac": "事件缺失占比",
+    "Linear max run": "线性插值上限",
+    "Z-score max run": "Z 分数上限",
+    "Missing frac low": "缺失占比下限",
+    "Missing frac high": "缺失占比上限",
+    "Z-score threshold": "Z 分数阈值",
+    "Z-score background": "Z 分数背景窗",
+    "Spike repair sigma": "尖峰修复阈值",
+    "Reference ratio": "参考段比例",
+    "Min reference": "参考段最短",
+    "Max reference": "参考段最长",
+    "Oscillation low": "振荡比下限",
+    "Oscillation high": "振荡比上限",
+    "Rebuild/raw cap": "重建/原始上限",
+    "Rebuild/bg cap": "重建/背景上限",
+    "Energy background": "能量背景窗",
+    "Quantize to integers": "修复值整数化",
+
+    # —— 悬浮提示 ——
+    "Window (s) to detect isolated spikes: a sample deviating more than "
+    "spike_k × local std/MAD": "检测孤立尖峰的窗口长度（秒）；"
+                                "样本偏离邻域 std/MAD 超过 spike_k 倍即判定为尖峰",
+    "Spike detection threshold (std/MAD units); larger = fewer detections":
+        "尖峰检测阈值（std/MAD 单位），越大越保守、误报越少",
+    "Step/offset detection threshold on the first-difference median":
+        "一阶差分中位数上的阶跃/偏移检测阈值",
+    "Minimum duration (s) of a constant run treated as frozen clock; only its "
+    "missing samples are repaired":
+        "判定为「冻结时钟」的常量段最短时长（秒），仅修复其中的缺失样本",
+    "RMS short window for burst/oscillation energy tracking":
+        "突发/振荡能量跟踪的 RMS 短窗（秒）",
+    "Background RMS window for the long-term energy baseline":
+        "长期能量基线的 RMS 背景窗（秒）",
+    "Burst trigger: short-RMS / background-RMS ≥ this ratio":
+        "突发触发条件：短窗 RMS / 背景 RMS ≥ 该比值",
+    "Minimum duration (s) of a burst/oscillation segment":
+        "突发/振荡段的最小持续时长（秒）",
+    "Absolute RMS floor below which the signal is low-dynamic (quiet)":
+        "判定为「低动态（安静段）」的绝对 RMS 下限",
+    "Multiplier on low_dynamic_rms to scale detection in quiet segments":
+        "低动态 RMS 的放大倍数，用于安静段的检测尺度",
+    "Merge anomalies closer than this (s) into one segment (e.g. ≥ 120 s to "
+    "keep DSSRR reference clear of neighbours)":
+        "相邻异常间隔小于该值（秒）时合并为一段；建议 ≥120 以保证"
+        "DSSRR 参考段不沾到相邻异常",
+    "Boundary padding (s) added on both sides of short anomalies":
+        "短异常两侧的边界扩展（秒）",
+    "Boundary padding (s) for long segments so the reference is fully outside "
+    "the anomaly": "长异常两侧的边界扩展（秒），确保参考段完全落在异常之外",
+    "Upper limit (s) of a single repaired segment; longer segments are split":
+        "单段修复时长上限（秒），更长的段会被拆分",
+    "Event (moonquake) detection: envelope shape tolerance":
+        "事件（月震）检测：包络形态容差",
+    "Event detection: allowed envelope onset jitter":
+        "事件检测：包络起始抖动容差",
+    "Minimum duration (s) of an event candidate":
+        "事件候选的最小持续时长（秒）",
+    "Coda length multiplier (× event duration) for the event tail":
+        "事件尾波长度倍数（× 事件时长）",
+    "Smoothing factor of the event envelope RMS":
+        "事件包络 RMS 的平滑系数",
+    "Head/body amplitude ratio expected for a catalog event":
+        "目录事件预期的头段/中段振幅比",
+    "Max missing fraction inside an event candidate before rejection":
+        "事件候选内部允许的最大缺失占比，超过则拒绝",
+    "Missing runs ≤ this many samples are linearly interpolated":
+        "缺失段不超过该样点数时用线性插值",
+    "Missing runs from 3 to z_max_run samples are Z-score cleaned (background "
+    "stats from neighbours)":
+        "缺失段在 3 到 z_max_run 个样点时用 Z 分数清理"
+        "（背景统计取自邻域）",
+    "Missing-fraction lower bound for DSSRR (repair if ≥)":
+        "DSSRR 的缺失占比下限（≥ 该值才修复）",
+    "Missing-fraction upper bound; above it the segment is left as-is (too "
+    "little information)":
+        "缺失占比上限，超过则保留原样（信息太少）",
+    "Z-score outlier threshold (σ) for spike removal in the Z-score path":
+        "Z 分数路径中尖峰剔除的 σ 阈值",
+    "Background window (s) used for Z-score statistics":
+        "Z 分数统计的背景窗（秒）",
+    "σ threshold for repairing isolated spikes before DSSRR":
+        "DSSRR 之前孤立尖峰修复的 σ 阈值",
+    "Reference length = anomaly length × ref_ratio (each side); clamped to "
+    "[ref_min, ref_max] s (paper default 120–600 s)":
+        "参考段长度 = 异常长度 × ref_ratio（每侧），并钳制到 [ref_min, ref_max] 秒"
+        "（论文默认 120–600 秒）",
+    "Reference segment minimum (s); paper default 120 s":
+        "参考段最短时长（秒），论文默认 120 秒",
+    "Reference segment maximum (s); paper default 600 s":
+        "参考段最长时长（秒），论文默认 600 秒",
+    "Safety gap (s) between the anomaly boundary and each reference segment; "
+    "paper default 0.5 s. Too large shrinks the usable reference on long gaps; "
+    "0 means the reference sits right at the anomaly edge (not recommended).":
+        "异常边界与每侧参考段之间的安全间隔（秒），论文默认 0.5 秒。"
+        "调大会压缩长缺口段下可用的参考窗口长度；"
+        "0 表示参考段贴到异常边缘（不推荐）。",
+    "Oscillation-ratio lower bound: inside active oscillation → back off":
+        "振荡比下限：处于活跃振荡背景时回退修复",
+    "Oscillation-ratio upper bound": "振荡比上限",
+    "Cap: rebuilt std ≤ raw-reference std × this factor":
+        "上限：重建段 std ≤ 原始参考段 std × 该系数",
+    "Cap: rebuilt std ≤ background std × this factor":
+        "上限：重建段 std ≤ 背景 std × 该系数",
+
+    # —— 修复分组总说明（带 G 的扩展版）——
+    "DSSRR reference length ≥ L×ref_ratio (clamped to [ref_min, ref_max] s); "
+    "reference segments are kept reference_gap_sec away from the anomaly edge; "
+    "energy guard backs off repair when the segment is part of active oscillation "
+    "background (osc_lo..osc_hi) or the rebuilt std exceeds raw×std_raw_factor / "
+    "bg×std_bkg_factor.":
+        "DSSRR 参考长度 ≥ L×ref_ratio（并钳制到 [ref_min, ref_max] 秒）；"
+        "参考段与异常边缘之间保留 reference_gap_sec 的安全间隔；当该段属于"
+        "活跃振荡背景（osc_lo..osc_hi），或重建后的标准差超过 "
+        "raw×std_raw_factor / bg×std_bkg_factor 时，能量守护会放弃修复。",
     "Data Sources": "数据源",
     "Catalog CSV dir": "目录 CSV 输出目录",
     "Anomaly detection: spike/step/freeze/burst/event detectors and boundary padding "

@@ -826,7 +826,8 @@ class ManualRepairDialog(QDialog):
         L_sec = (e - s + 1) / SR
         ref = float(np.clip(max(rp["ref_min_sec"], L_sec * rp["ref_ratio"]),
                             rp["ref_min_sec"], rp["ref_max_sec"]))
-        gap = int(0.5 * SR)
+        # 安全间隔 G：与去异常参数设置页保持一致（默认 0.5 s）
+        gap = int(rp.get("reference_gap_sec", 0.5) * SR)
         rn = int(ref * SR)
         ok = 0
         rb_end = s - gap
