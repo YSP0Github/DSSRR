@@ -3,6 +3,16 @@
 All notable changes to the `dssrr` package are documented here.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+- `reproduce/experiments/_verify_unet_gap_regime.py`, the check behind the
+  supplement's *Note on the deployment regime* (training / in-domain /
+  E-RealInj gap-length ranges and the flatness of the 1-D U-Net Wasserstein
+  degradation across 300--3600 s), plus the corresponding README entry and a
+  refreshed `MANIFEST.md5`. `reproduce/` is documentation-only and is not
+  installed with the package, so this does not warrant a version bump.
+
 ## [0.1.1] — 2026-10-10
 
 ### Added
