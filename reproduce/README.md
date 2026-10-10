@@ -68,7 +68,15 @@ Supporting modules imported by the drivers: `experiments/protocol.py`,
 Verification / audit scripts are included for provenance:
 `_audit_baselines.py`, `_audit_weakness.py`, `_audit_ssa.py`,
 `_audit_ssa_unify_fig05b.py`, `_audit_dssrr_quantize.py`,
-`_verify_fig05_numbers.py`, `_verify_supp_tables.py`.
+`_verify_fig05_numbers.py`, `_verify_supp_tables.py`,
+`_verify_unet_gap_regime.py` (the training/test gap-length regime check behind the
+supplement's *Note on the deployment regime*).
+
+These read the archived instance-level tables. In this package those inputs live
+under `data/` --- for example `_verify_unet_gap_regime.py` reads
+`data/e_realinj/stats_summary.csv` and `data/in_domain/dl_synth_by_anomaly.csv` ---
+whereas the archived copies refer to the authors' original `results_*/` layout.
+Adjust the two paths before running, as explained in section 4.
 
 ---
 
