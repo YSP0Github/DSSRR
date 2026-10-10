@@ -149,3 +149,12 @@ after the `quantize` default changed.
 Metric definitions (Wasserstein distance, ACF $L_2$, energy ratio, PSD cosine,
 envelope distance, spectral-entropy error) are implemented in
 `experiments/_metrics_lib.py` and described in the paper's *Data and Methods*.
+
+`MANIFEST.md5` lists an MD5 for every file in this directory (except itself).
+It was computed on the **repository** content, where the repository's
+`.gitattributes` normalises text files to LF; `.mseed` files are stored
+byte-exact. Verify a fresh clone with:
+
+```bash
+cd reproduce && md5sum -c MANIFEST.md5
+```
